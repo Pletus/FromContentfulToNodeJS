@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-const PORT = process.env.BACK_END || 8000;
+const PORT = process.env.PGPORT || 8000;
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
