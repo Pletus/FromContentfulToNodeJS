@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD} = process.env;
 
 const pool = new Pool({
   host: PGHOST,
@@ -9,10 +9,9 @@ const pool = new Pool({
   username: PGUSER,
   password: PGPASSWORD,
   port: 5432,
-  ssl: 'require',
-  connection: {
-    options: `project=${ENDPOINT_ID}`,
-  },
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 async function getPgVersion() {
