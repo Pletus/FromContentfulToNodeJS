@@ -5,8 +5,7 @@ require("dotenv").config();
 const { getPgVersion, pool } = require("./DB/dbConnect");
 const {
   getRecipeDetail,
-  updateRecipe,
-  deleteRecipe
+  getRecipe_id,
 } = require("./controllers/recipeControllers");
 
 const PORT = process.env.Database || 8000;
@@ -20,9 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.route("/recipe_detail").get(getRecipeDetail),
-/* app.route("/recipes").get(getAllRecipes).post(createRecipe);
-app.route("/recipes/:id").get(getRecipe).put(updateRecipe).delete(deleteRecipe); */
-
-app.listen(PORT, () =>
-  console.log(`Server running in port http://localhost:${PORT}`)
-);
+  app.route("/recipe_detail/:id").get(getRecipe_id),
+  app.listen(PORT, () =>
+    console.log(`Server running in port http://localhost:${PORT}`)
+  );
