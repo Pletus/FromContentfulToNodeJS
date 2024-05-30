@@ -11,6 +11,11 @@ const {
 const PORT = process.env.Database || 8000;
 
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  // Add other CORS headers if needed
+  next();
+});
 
 getPgVersion();
 
