@@ -7,6 +7,9 @@ const getRecipeDetail = (req, res) => {
         r.recipe_name,
         r.description,
         r.cooking_time,
+        r.image_link,
+        r.calories,
+        r.portions,
         i.ingredient_name,
         ri.measurement,
         s.step_number,
@@ -36,6 +39,9 @@ const getRecipeDetail = (req, res) => {
           recipe_name: row.recipe_name,
           description: row.description,
           cooking_time: row.cooking_time,
+          calories: row.calories,
+          portions: row.portions,
+          image_link: row.image_link,
           ingredients: [],
           steps: [],
         };
@@ -83,6 +89,9 @@ const getRecipe_id = (req, res) => {
       r.recipe_name,
       r.description,
       r.cooking_time,
+      r.image_link,
+      r.calories,
+      r.portions,
       i.ingredient_name,
       ri.measurement,
       s.step_number,
@@ -115,6 +124,9 @@ const getRecipe_id = (req, res) => {
       recipe_name: results.rows[0].recipe_name,
       description: results.rows[0].description,
       cooking_time: results.rows[0].cooking_time,
+      calories: results.rows[0].calories,
+      portions: results.rows[0].portions,
+      image_link: results.rows[0].image_link,
       ingredients: [],
       steps: [],
     };
@@ -154,9 +166,6 @@ const getRecipe_id = (req, res) => {
   });
 };
 
-const updateRecipe = (req, res) => {};
-
-const deleteRecipe = (req, res) => {};
 
 module.exports = {
   getRecipeDetail,
